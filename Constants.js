@@ -20,5 +20,9 @@ const Buy = {
 
 }
 
+const Rent={    
+    URL:"https://housing.com/rent/search-C3i",
+    Filter:"P38f9yfbk7p3m2h1fS6Y1",
+}
 
-export { Main, Buy };
+export { Main, Buy,Rent };
