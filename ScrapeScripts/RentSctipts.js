@@ -75,7 +75,7 @@ const extractFromEachProperty = async (properties, page) =>
 		{
 			propertyAdditionalDetails = await page.$$eval('.T_dataPointStyle._h31f4h', (rows) =>
 			{
-				let details = { age: null, gated_community: null, bathrooms: null, carpet_area: null, gas_pipeline: null }
+				let details = { age: null, gated_community: null, bathrooms: null, carpet_area: null, gas_pipeline: null,facing:null }
 				for (let j = 0; j < rows.length; j++)
 				{
 					try
@@ -100,6 +100,10 @@ const extractFromEachProperty = async (properties, page) =>
 						else if (rows[j].innerText.startsWith("Gas Pipeline"))
 						{
 							details.gas_pipeline = text[1] === "Yes"
+						}
+						else if(rows[j].innerText.startsWith("Main entrance facing"))
+						{
+							details.facing=text[1];
 						}
 					}
 					catch (innerErr)
