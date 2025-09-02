@@ -150,7 +150,7 @@ const RentRoutine = async (page) =>
 
 	for (let i = 0; i < 3; i++)
 	{
-		for (let pageNum = 1; pageNum <= Main.MaxPages; pageNum++)
+		for (let pageNum = Main.StartPage; pageNum <= Main.EndPage; pageNum++)
 		{
 			const currentUrl = `${Rent.URL}${Rent.PropertyCode[i]}${Rent.Filter}${Main.Page}${pageNum}`
 

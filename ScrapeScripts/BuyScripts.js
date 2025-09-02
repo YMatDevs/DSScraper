@@ -8,7 +8,9 @@ async function BuyApartments(page, domain, context) {
 
     const propertiesOnPage = await page.evaluate((domain) => {
         const results = [];
-        const propertyCards = document.querySelectorAll("div.T_infoStyle");
+        const propertyCardss = document.querySelectorAll("div.T_infoStyle");
+
+        const propertyCards = Array.from(propertyCardss).slice(0, 3);
 
         propertyCards.forEach((card) => {
             const getText = (selector) =>
@@ -37,7 +39,6 @@ async function BuyApartments(page, domain, context) {
             results.push({
                 uniqueId: uniqueId,
                 type: "Apartment",
-
                 price: price,
                 area: area,
                 possessionStatus: possessionStatus,
@@ -109,7 +110,7 @@ async function BuyRoutine(page, context)
 {
     let finalProperties = [];
 
-    for(let pageNum = 1; pageNum <= Main.MaxPages; pageNum++) {
+    for(let pageNum = Main.StartPage; pageNum <= Main.EndPage; pageNum++) {
 
         const currentUrl = Buy.URL + Buy.PropertyCode.Apartment + Buy.CityCode + Buy.Filter + Main.Page + `${pageNum}`;
 
